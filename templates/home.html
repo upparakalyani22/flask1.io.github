@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <div class="nav">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('upload') }}">Upload</a>
+        </div>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash flash-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Main Content -->
+        <h1>Welcome to Flask Home Page</h1>
+        <p>This page uses global CSS.</p>
+
+        <button>Click Me</button>
+    </div>
+</body>
+</html>
